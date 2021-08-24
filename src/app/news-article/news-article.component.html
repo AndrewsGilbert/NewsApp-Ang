@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<div class="websiteButton" >
+
+    <div *ngFor="let item of web">
+
+        <button class="button nbd{{item.id}}" (click)="showNewsEvent(item.id)">{{item.name}}</button>
+    
+    </div>
+</div>
+
+<ng-content></ng-content>
+

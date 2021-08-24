@@ -1,0 +1,40 @@
+<div *ngIf="!loadbool else load" class="container">
+
+  <div>
+    <app-header class="header" (display_website_event) = "displayWebsite()" ></app-header>
+  </div>
+
+  <div *ngIf="clickweb" >
+
+    <app-news-article class="news-article" [web]="web" (show_news_event)="showNews($event)">
+     
+      <div *ngIf="newsbutclick" >
+
+        <div>
+          <app-news-content [newsDet]="newsDet" [webname]="webname"></app-news-content>
+        </div>
+
+        <div *ngIf="addNewsBool">
+          <app-add-news [webid]="webid" [index]="index" (add_news_event)="addNews($event)" ></app-add-news>
+        </div>
+
+        <div>
+          <app-next-process [index]="index" [webid]="webid" (gen_audio_event)="audioGen($event)" (gen_video_event)="videoGen($event)" (post_video_event)="postVideo($event)" ></app-next-process>
+        </div>
+
+        <div *ngIf="videoBool">
+         <app-video-tag [filename]='filename'></app-video-tag>
+        </div>
+      </div>
+
+    </app-news-article>
+
+  </div>
+
+</div>
+
+<ng-template #load class="container">
+
+  <img class="load" src="assets/load.gif">
+
+</ng-template>
